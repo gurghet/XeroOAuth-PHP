@@ -8,16 +8,16 @@ if (! class_exists ( 'OAuthSimple' )) {
 /**
  * Define a custom Exception for easy trap and detection
  */
-class XeroOAuthException extends Exception {
+class XeroOAuthalteException extends Exception {
 }
-class XeroOAuth {
+class XeroOAuthalte {
 	var $_xero_defaults;
 	var $_xero_consumer_options;
 	var $_action;
 	var $_nonce_chars;
 	
 	/**
-	 * Creates a new XeroOAuth object
+	 * Creates a new XeroOAuthalte object
 	 *
 	 * @param string $config,
 	 *        	the configuration settings
@@ -241,7 +241,7 @@ class XeroOAuth {
 		
 		// configure curl
 		$c = curl_init ();
-		$useragent = (isset ( $this->config ['user_agent'] )) ? (empty ( $this->config ['user_agent'] ) ? 'XeroOAuth-PHP' : $this->config ['user_agent']) : 'XeroOAuth-PHP';
+		$useragent = (isset ( $this->config ['user_agent'] )) ? (empty ( $this->config ['user_agent'] ) ? 'XeroOAuthalte-PHP' : $this->config ['user_agent']) : 'XeroOAuthalte-PHP';
 		curl_setopt_array ( $c, array (
 				CURLOPT_USERAGENT => $useragent,
 				CURLOPT_CONNECTTIMEOUT => $this->config ['curl_connecttimeout'],
@@ -434,7 +434,7 @@ class XeroOAuth {
 		} 
 
 		catch ( Exception $e ) {
-			$errorMessage = 'XeroOAuth::request() ' . $e->getMessage ();
+			$errorMessage = 'XeroOAuthalte::request() ' . $e->getMessage ();
 			$this->response['response'] = $errorMessage;
 			$this->response['helper'] = $url;
 			return $this->response;
